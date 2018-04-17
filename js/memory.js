@@ -38,7 +38,7 @@ function compareCards(pickedCard) {
     card1 = pickedCard;
     return;
   }
-  else if (card1.innerText == pickedCard.innerText) {
+  else if (card1.innerText !== pickedCard.innerText) {
     pickedCard.parentElement.classList.toggle("flip");
     card1.parentElement.classList.toggle("flip");
     card1 = '';
