@@ -5,6 +5,9 @@ const headerTimer = document.querySelector('.time');
 const resetButton = document.querySelector('button');
 const moveCounter = document.querySelector('.moves');
 const starsSpan = document.querySelector('.stars');
+const modal = document.querySelector('#modal');
+const modalCloseX = document.querySelector('.close');
+const resetLink = document.querySelector('.reset');
 
 let level = 'easy';
 let card1 = '';
@@ -13,6 +16,7 @@ let foundPairTarget = 8;
 let foundPairCount = 0;
 let timer = null;
 let count = 0;
+let deck = [''];
 
 /*
 Creates the board with a certain amount of cards (Default 4x4)
@@ -22,9 +26,11 @@ and not set the deck to fixed.
 function buildBoard(level) {
   let size = 4;
   let htmlTextToAdd = '';
+  cardChooser();
+  console.log(deck);
   board.innerHTML = '';
-  for (let i = 1; i <= size*size; i++){
-    htmlTextToAdd += '<div class="cardContainer"><div class="card"><div class="front">front</div><div class="back">back'+i+'</div></div></div>';
+  for (let i = 0; i < size*size; i++){
+    htmlTextToAdd += '<div class="cardContainer"><div class="card"><div class="front">'+deck[i]+'</div><div class="back">back'+i+'</div></div></div>';
   }
   board.insertAdjacentHTML('afterbegin',htmlTextToAdd);
 }
@@ -120,26 +126,69 @@ function reset() {
   moveCounter.innerText = "0";
   foundPairCount = 0;
   buildBoard(level);
-  starsSpan.innerText = "***"
+  starsSpan.innerText = "🌟🌟🌟"
 }
 
 function winner() {
   stopTimer();
   console.log("WE HAVE A WINNEEEEEEERRRRR!!!!")
+  showModal();
 }
 
 //Updates the rating according to certain moves, must change to parameters once difficulty is implemented
 function checkRating() {
   switch (moves) {
     case 9:
-      starsSpan.innerText = "**"
+      starsSpan.innerText = "🌟🌟"
       break;
     case 12:
-      starsSpan.innerText = "*"
+      starsSpan.innerText = "🌟"
       break;
     default:
       break;
   }
+}
+
+function showModal() {
+  let finalTime = document.querySelector('.modal-content .time');
+  let finalRating = document.querySelector('.modal-content .stars');
+  finalTime.innerText = time;
+  finalRating.innerText = starsSpan.innerText;
+  modal.style.display = "block";
+}
+
+function hideModal() {
+  modal.style.display = "none"
+}
+
+/* Fisher-Yates shuffle algorithm
+   Basically grabs the array, generates a random number based on the number of indexes left,
+   and switches those numbers
+*/
+function shuffle(array) {
+  let index = array.length;
+  let temp;
+  let randomIndex;
+  while (0 !== index) {
+    randomIndex = Math.floor(Math.random() * index);
+    index -= 1;
+    temp = array[index];
+    array[index] = array[randomIndex];
+    array[randomIndex] = temp;
+  }
+  return array;
+}
+
+//8 hard coded, has to change with levels
+function cardChooser() {
+  let symbols = ["♶","♻","⚐","⚑","⚽","⚾","⛭","⛯","⛳","⛷","⛀","⛁","♜","♖","☺","✐","✈","✇","🂹","😈","😐","😑","😼","😺","➇","❽"];
+  shuffle(symbols);
+  symbols.length = 8;
+  for (let i = 0; i < 8 ; i++){
+    symbols.push(symbols[i]);
+  }
+  shuffle(symbols);
+  deck = symbols;
 }
 
 buildBoard(level);
@@ -147,3 +196,6 @@ buildBoard(level);
 // Events
 board.addEventListener('click',flipCard);
 resetButton.addEventListener('click',reset);
+resetLink.addEventListener('click',reset);
+modalCloseX.addEventListener('click',hideModal);
+modal.addEventListener('click', hideModal);
