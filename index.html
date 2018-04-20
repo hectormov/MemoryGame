@@ -6,18 +6,18 @@
     <title>Memory Game by Hector Moreno</title>
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/responsive.css">
+    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
   </head>
   <body>
     <header>
-      <div id="logo">logo</div>
+      <img id="logo" src="img/logo3.svg">
+      <h1>The Memory Game!</h1>
       <div id="gameStatus">Moves: <span class="moves">0</span></div>
-      <div id="Counter">Time: <span class="time">00:00:00</span>
+      <div id="counter">Time: <span class="time">00:00:00</span></div>
+      <button type="button">Restart</button>
+      <div class="starRating">Rating: <span class="stars">🌟🌟🌟</span>
     </header>
-    <div id="sideBar">
-      <button type="button">Reset</button>
-      <div class="StarRating">Rating: <span class="stars">🌟🌟🌟</span>
-    </div>
-    <main>
+    <section>
       <div id="modal">
         <span class="close">&times;</span>
         <div class="modal-content">
@@ -32,11 +32,10 @@
           </div>
         </div>
       </div>
+    </section>
+    <main>
       <div id="gameBoard"></div>
     </main>
-
-    <footer>
-    </footer>
     <script src="js/memory.js"></script>
   </body>
 </html>

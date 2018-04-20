@@ -27,10 +27,9 @@ function buildBoard(level) {
   let size = 4;
   let htmlTextToAdd = '';
   cardChooser();
-  console.log(deck);
   board.innerHTML = '';
   for (let i = 0; i < size*size; i++){
-    htmlTextToAdd += '<div class="cardContainer"><div class="card"><div class="front">'+deck[i]+'</div><div class="back">back'+i+'</div></div></div>';
+    htmlTextToAdd += '<div class="cardContainer"><div class="card"><div class="front"><span class="icon">'+deck[i]+'</span></div><div class="back"></div></div></div>';
   }
   board.insertAdjacentHTML('afterbegin',htmlTextToAdd);
 }
@@ -131,7 +130,6 @@ function reset() {
 
 function winner() {
   stopTimer();
-  console.log("WE HAVE A WINNEEEEEEERRRRR!!!!")
   showModal();
 }
 

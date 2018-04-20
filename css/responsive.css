@@ -4,3 +4,26 @@
   flex-wrap: wrap;
   justify-content: center;
 }
+
+header {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+@media screen and (min-width: 360px) {
+  h1 {
+    font-size: 24px;
+  }
+  #gameBoard {
+    margin-top: 35px;
+  }
+  header {
+    /* margin-bottom: auto; */
+  }
+  .cardContainer {
+    width: calc((25% - 12px));
+  }
+  .icon {
+    font-size: 50px;
+  }
+}
