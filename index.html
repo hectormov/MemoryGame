@@ -8,6 +8,23 @@
     <link rel="stylesheet" href="css/responsive.css">
     <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
   </head>
+  <section>
+    <div id="modal">
+      <div class="modal-content">
+        <div class ="modal-header">
+          <span>We have a winner!</span>
+          <span class="close">&times;</span>
+        </div>
+        <div class ="modal-body">
+          <div class="winnerTime">You completed the game in <span class="time"></span></div>
+          <div class="winnerRating">Rating: <span class="stars"></span></div>
+        </div>
+        <div class ="modal-footer">
+          Play again? <span class="reset">GO!</button>
+        </div>
+      </div>
+    </div>
+  </section>
   <body>
     <header>
       <img id="logo" src="img/logo3.svg">
@@ -15,24 +32,9 @@
       <div id="gameStatus">Moves: <span class="moves">0</span></div>
       <div id="counter">Time: <span class="time">00:00:00</span></div>
       <button type="button">Restart</button>
-      <div class="starRating">Rating: <span class="stars">🌟🌟🌟</span>
+      <div class="starRating">Rating: <span id="stars">🌟🌟🌟</span>
     </header>
-    <section>
-      <div id="modal">
-        <span class="close">&times;</span>
-        <div class="modal-content">
-          <div class ="modal-header">
-            <h1>YAAASSS!</h1>
-          </div>
-          <div class ="modal-body">
-            You completed the game in <span class="time"></span> Rating: <span class="stars"></span>
-          </div>
-          <div class ="modal-footer">
-            Play again? <span class="reset">GO!</button>
-          </div>
-        </div>
-      </div>
-    </section>
+
     <main>
       <div id="gameBoard"></div>
     </main>
