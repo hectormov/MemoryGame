@@ -148,7 +148,7 @@ function checkRating() {
 }
 
 function showModal() {
-  let finalTime = document.querySelector('.modal-content .time');
+  let finalTime = document.querySelector('.finalTime');
   let finalRating = document.querySelector('.modal-content .stars');
   finalTime.innerText = time;
   finalRating.innerText = starsSpan.innerText;

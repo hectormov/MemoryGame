@@ -5,13 +5,53 @@ header {
   flex-wrap: wrap;
 }
 
-@media screen and (min-width: 376px) {
+@media screen and (max-width: 376px) {
   #logo {
-    width: 55px;
-    height: 55px;
+    width: 45px;
+    height: 45px;
   }
   h1 {
-    font-size: 30px;
+    font-size: 25px;
   }
+}
 
+@media screen and (min-width: 540px) {
+  h1 {
+    font-size: 40px;
+  }
+  #logo {
+    width: 85px;
+    height: 65px;
+  }
+  #gameStatus,
+  #counter,
+  #starRating {
+    font-size: 18px;
+  }
+  .modal-header{
+    font-size: 32px;
+  }
+  .modal-body {
+    font-size: 16px;
+  }
+  .modal-footer {
+    font-size: 22px;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .modal-header{
+    font-size: 38px;
+  }
+  #gameStatus,
+  #counter,
+  #starRating {
+    font-size: 20px;
+  }
+  .modal-body {
+    font-size: 22px;
+  }
+  .modal-footer {
+    font-size: 28px;
+  }
 }
