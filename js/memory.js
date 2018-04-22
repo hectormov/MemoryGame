@@ -8,11 +8,12 @@ const starsSpan = document.querySelector('#stars');
 const modal = document.querySelector('#modal');
 const modalCloseX = document.querySelector('.close');
 const resetLink = document.querySelector('.reset');
+const easyLevel = document.querySelector('#easyLevel');
+const hardLevel = document.querySelector('#hardLevel');
 
 let level = 'easy';
 let card1 = '';
 let moves = 0;
-let foundPairTarget = 8;
 let foundPairCount = 0;
 let timer = null;
 let count = 0;
@@ -24,12 +25,12 @@ TODO: I want to introduce different difficulty levels with more cards so I thoug
 and not set the deck to fixed.
 */
 function buildBoard(level) {
-  let size = 4;
+  let size = level === 'easy' ? 16 : 36;
   let htmlTextToAdd = '';
   cardChooser();
   board.innerHTML = '';
-  for (let i = 0; i < size*size; i++){
-    htmlTextToAdd += '<div class="cardContainer"><div class="card"><div class="front"><span class="icon">'+deck[i]+'</span></div><div class="back"></div></div></div>';
+  for (let i = 0; i < size; i++){
+    htmlTextToAdd += '<div class="cardContainer ' + level + '"><div class="card"><div class="front"><span class="icon">'+deck[i]+'</span></div><div class="back"></div></div></div>';
   }
   board.insertAdjacentHTML('afterbegin',htmlTextToAdd);
 }
@@ -69,18 +70,20 @@ function compareCards(pickedCard) {
     return;
   }
   else if (card1.innerText !== pickedCard.innerText) {
+    let flipLevel = level === 'easy' ? 800 : 400;
     fail(pickedCard, card1);
     setTimeout(function () {
       pickedCard.parentElement.classList.toggle("flip");
       card1.parentElement.classList.toggle("flip");
       fail(pickedCard, card1);
       card1 = '';
-    },400);
+    },flipLevel);
     increaseMoves();
     return;
   }
   matchFound(pickedCard);
   increaseMoves();
+  let foundPairTarget = level === 'easy' ? 8 : 18;
   if (foundPairCount === foundPairTarget) {
     winner();
   }
@@ -92,6 +95,8 @@ function compareCards(pickedCard) {
 function fail(pickedCard, card1) {
   pickedCard.classList.toggle("fail");
   card1.classList.toggle("fail");
+  // pickedCard.classList.parentElement.toggle("shake");
+  // card1.classList.parentElement.toggle("shake");
 }
 
 //Marks the cards are found so they are not clickable again and stay flipped, increases the found pairs count
@@ -144,15 +149,28 @@ function winner() {
 
 //Updates the rating according to certain moves, must change to parameters once difficulty is implemented
 function checkRating() {
-  switch (moves) {
-    case 11:
-      starsSpan.innerText = "🌟🌟"
-      break;
-    case 16:
-      starsSpan.innerText = "🌟"
-      break;
-    default:
-      break;
+  if (level === 'easy') {
+    switch (moves) {
+      case 11:
+        starsSpan.innerText = "🌟🌟"
+        break;
+      case 16:
+        starsSpan.innerText = "🌟"
+        break;
+      default:
+        break;
+    }
+  } else {
+    switch (moves) {
+      case 22:
+        starsSpan.innerText = "🌟🌟"
+        break;
+      case 32:
+        starsSpan.innerText = "🌟"
+        break;
+      default:
+        break;
+    }
   }
 }
 
@@ -188,10 +206,16 @@ function shuffle(array) {
 
 //8 hard coded, has to change with levels
 function cardChooser() {
-  let symbols = ["♶","♻","⚐","⚑","⚽","⚾","⛭","⛯","⛳","⛷","⛀","⛁","♜","♖","☺","✐","✈","✇","🂹","😈","😐","😑","😼","😺","➇","❽"];
+  let symbols = [
+    "♶","♻","⚐","⚑","⚽","⚾","⛳","♜",
+    "♖","☺","✐","✈","✇","😈","😐","😑",
+    "😼","😺","➇","❽","☺","☠","😅","😇",
+    "😎","😭","🙈","🙅","✆","✋","😤","🙉",
+    "⛇","⚥","⚦","☔","☕","♣","♫","♡"];
   shuffle(symbols);
-  symbols.length = 8;
-  for (let i = 0; i < 8 ; i++){
+  symbols.length = level === 'easy' ? 8 : 18;
+  let totalCards = symbols.length;
+  for (let i = 0; i < totalCards ; i++){
     symbols.push(symbols[i]);
   }
   shuffle(symbols);
@@ -206,3 +230,11 @@ resetButton.addEventListener('click',reset);
 resetLink.addEventListener('click',reset);
 modalCloseX.addEventListener('click',hideModal);
 modal.addEventListener('click', hideModal);
+easyLevel.addEventListener('click', function() {
+  level = 'easy';
+  reset();
+});
+hardLevel.addEventListener('click', function() {
+  level = 'hard';
+  reset();
+});

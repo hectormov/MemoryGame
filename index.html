@@ -6,7 +6,8 @@
     <title>Memory Game by Hector Moreno</title>
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/responsive.css">
-    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
   </head>
   <section>
     <div id="modal">
@@ -30,14 +31,22 @@
       <img id="logo" src="img/logo3.svg">
       <h1>Memory Game</h1>
       <div id="gameStatus">Moves: <span class="moves">0</span></div>
+      <div class="levelSelector">
+        <form>
+          <input type="radio" name="levelSelector" id="easyLevel" checked="checked">Easy
+          <input type="radio" name="levelSelector" id="hardLevel">Hard
+        </form>
+      </div>
       <div id="counter">Time: <span class="time">00:00:00</span></div>
       <button type="button">Restart</button>
       <div class="starRating">Rating: <span id="stars">🌟🌟🌟</span>
     </header>
-
     <main>
       <div id="gameBoard"></div>
     </main>
     <script src="js/memory.js"></script>
+    <footer>
+      <a rel="nofollow" href="https://www.vecteezy.com/">Free Vector Art by www.vecteezy.com</a>
+    </footer>
   </body>
 </html>

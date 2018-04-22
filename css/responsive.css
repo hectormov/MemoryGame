@@ -6,6 +6,22 @@ header {
 }
 
 @media screen and (max-width: 376px) {
+  #gameStatus,
+  .levelSelector,
+  #counter,
+  button,
+  .starRating {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .icon {
+    top: 15%;
+  }
+}
+
+@media screen and (max-width: 668px) {
   #logo {
     width: 45px;
     height: 45px;
@@ -13,9 +29,12 @@ header {
   h1 {
     font-size: 25px;
   }
+  .cardContainer.easy {
+    min-height: 75px;
+  }
 }
 
-@media screen and (min-width: 540px) {
+@media screen and (min-width: 669px) {
   h1 {
     font-size: 40px;
   }
@@ -24,8 +43,10 @@ header {
     height: 65px;
   }
   #gameStatus,
+  .levelSelector,
   #counter,
-  #starRating {
+  button,
+  .starRating {
     font-size: 18px;
   }
   .modal-header{
@@ -36,6 +57,9 @@ header {
   }
   .modal-footer {
     font-size: 22px;
+  }
+  .icon {
+    top: 0%;
   }
 }
 

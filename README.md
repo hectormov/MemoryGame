@@ -1,6 +1,15 @@
 # Memory Game
 
-From the project Overview page of the FEND from Udacity:
+##Implementation Details:
+
+There are two _**game modes**_: Easy and Hard, the difference between them is the amount of cards and the time they stay open to view. Clicking on either level will reset the game.
+
+_**Moves**_ display the amount of tries you have done during the current gameplay.
+
+_**Rating**_ - The stars will decrease after certain amount of moves depending on the level you have selected.
+
+
+##From the project Overview page of the FEND from Udacity:
 
 What Will I Build?
 The Memory Game Project is all about demonstrating your mastery of HTML, CSS, and JavaScript. You’ll build a complete browser-based card matching game (also known as Concentration). But this isn’t just any memory game! It’s a shnazzy, well-designed, feature-packed memory game!

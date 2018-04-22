@@ -2,12 +2,15 @@ html,
 body {
   font-family: 'Poppins', sans-serif;
   margin: 0;
+  background-image: url('../img/martian.svg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 header {
-  min-height: 140px;
-  margin-bottom: 20px;
-  max-width: 800px;
+  margin-bottom: 5px;
+  max-width: 920px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -25,45 +28,68 @@ h1 {
   margin-bottom: 0;
   font-size: 35px;
   text-align: center;
+  color: rgb(230,230,230);
 }
 
 #gameStatus {
-  width: 50%;
-  width: calc(50% - 3px);
+  width: calc(33% - 3px);
   margin-left: 3px;
+  color: rgb(230,230,230);
+}
+
+.levelSelector {
+  width: calc(33%);
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  color: rgb(230,230,230);
 }
 
 #counter {
-  width: calc(50% - 3px);
+  width: calc(33% - 3px);
   margin-right: 3px;
   text-align: right;
+  color: rgb(230,230,230);
 }
 
 button {
+  margin: auto;
   margin-left: 3px;
-  margin-right: auto;
+
 }
 
 .starRating {
   width: 50%;
   text-align: right;
+  color: rgb(230,230,230);
 }
 
 #gameBoard {
   margin-top: 10px;
   justify-content: center;
   width: 100vw;
-  max-width: 1200px;
+  max-width: 920px;
   margin: auto;
+  background: ;
+}
+
+.cardContainer.easy {
+  width: calc(25% - 25px);
+  height: calc(25vmin - 60px);
+}
+
+.cardContainer.hard {
+  width: calc(17% - 15px);
+  height: calc(17vmax - 60px);
+  max-height: 90px;
+  max-width: 125px;
 }
 
 .cardContainer {
   align-items: center;
   border: 1px solid black;
-  min-width: 75px;
-  min-height: 75px;
-  width: calc(25% - 25px);
-  height: calc(25vmin - 60px);
+  min-width: 50px;
+  min-height: 50px;
   margin: 3px;
   position: relative;
 
@@ -130,12 +156,18 @@ button {
 
 .icon {
   position: absolute;
-  top: 15%;
   width: 100%;
+  height: 100%;
   text-align: center;
-  /* font-size: 3em; */
-  font-size: 8vmin;
-  animation-name: slideIn;
+  font-size: 7vmin;
+}
+
+footer a {
+  font-size: 8px;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  z-index: -10;
 }
 
 /* Modal */
@@ -223,23 +255,25 @@ button {
   background: rgb(211, 70, 19);
 }
 
-/* Add Animation */
-@-webkit-keyframes slideIn {
-    from {bottom: -300px; opacity: 0}
-    to {bottom: 40%; opacity: 1}
+.shake {
+  animation: shake 0.5s;
+  animation-iteration-count: infinite;
 }
 
-@keyframes slideIn {
-    from {bottom: -300px; opacity: 0}
-    to {bottom: 40%; opacity: 1}
-}
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
 
-@-webkit-keyframes fadeIn {
-    from {opacity: 0}
-    to {opacity: 1}
-}
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
 
-@keyframes fadeIn {
-    from {opacity: 0}
-    to {opacity: 1}
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
+  }
 }
