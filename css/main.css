@@ -14,6 +14,7 @@ header {
 
 #logo {
   margin-top: 5px;
+  margin-left: 3px;
   width: 55px;
   height: 55px;
 }
@@ -21,7 +22,6 @@ header {
 h1 {
   width: 75%;
   margin-top: 5px;
-  /* margin-left: 45px; */
   margin-bottom: 0;
   font-size: 35px;
   text-align: center;
@@ -42,17 +42,15 @@ h1 {
 button {
   margin-left: 3px;
   margin-right: auto;
-  margin-top: 5px;
 }
 
 .starRating {
   width: 50%;
   text-align: right;
-  margin-top: 5px;
 }
 
 #gameBoard {
-  margin-top: 15px;
+  margin-top: 10px;
   justify-content: center;
   width: 100vw;
   max-width: 1200px;
@@ -110,11 +108,13 @@ button {
   -moz-transform: rotateY( 180deg );
   -o-transform: rotateY( 180deg );
   transform: rotateY( 180deg );
+  background: rgba(184,225,252,1);
+  background: linear-gradient(to bottom, rgba(184,225,252,1) 0%,rgba(169,210,243,1) 10%,rgba(144,186,228,1) 25%,rgba(144,188,234,1) 37%,rgba(144,191,240,1) 50%,rgba(107,168,229,1) 51%,rgba(162,218,245,1) 83%,rgba(189,243,253,1) 100%);
 }
 
 .back {
-  background: rgb(44,225,14);
-  background: radial-gradient(circle, rgba(44,225,14,1) 0%, rgba(13,14,209,0.7461551270898985) 100%);
+  background: rgb(104, 113, 155);
+  background: radial-gradient(circle, rgba(104, 113, 155,1) 0%, rgba(68, 74, 102,0.75) 100%);
 }
 
 .card.flip {
@@ -135,6 +135,7 @@ button {
   text-align: center;
   /* font-size: 3em; */
   font-size: 8vmin;
+  animation-name: slideIn;
 }
 
 /* Modal */
@@ -147,12 +148,23 @@ button {
   height: 100%;
   background-color: rgb(0,0,0);
   background-color: rgba(0,0,0,0.4);
+/* Fade in the background */
+  -webkit-animation-name: fadeIn;
+  -webkit-animation-duration: 0.4s;
+  animation-name: fadeIn;
+  animation-duration: 0.4s
 }
 
 .modal-content {
   position: fixed;
-  top: 40%;
+  /* top: 40vw; */
   width: 100%;
+  bottom: 40%;
+
+  -webkit-animation-name: slideIn;
+  -webkit-animation-duration: 0.4s;
+  animation-name: slideIn;
+  animation-duration: 0.4s
 }
 
 .modal-header {
@@ -205,4 +217,29 @@ button {
     padding: 2px 16px;
     background-color: #5cb85c;
     color: white;
+}
+
+.fail {
+  background: rgb(211, 70, 19);
+}
+
+/* Add Animation */
+@-webkit-keyframes slideIn {
+    from {bottom: -300px; opacity: 0}
+    to {bottom: 40%; opacity: 1}
+}
+
+@keyframes slideIn {
+    from {bottom: -300px; opacity: 0}
+    to {bottom: 40%; opacity: 1}
+}
+
+@-webkit-keyframes fadeIn {
+    from {opacity: 0}
+    to {opacity: 1}
+}
+
+@keyframes fadeIn {
+    from {opacity: 0}
+    to {opacity: 1}
 }

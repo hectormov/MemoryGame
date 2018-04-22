@@ -69,9 +69,13 @@ function compareCards(pickedCard) {
     return;
   }
   else if (card1.innerText !== pickedCard.innerText) {
-    pickedCard.parentElement.classList.toggle("flip");
-    card1.parentElement.classList.toggle("flip");
-    card1 = '';
+    fail(pickedCard, card1);
+    setTimeout(function () {
+      pickedCard.parentElement.classList.toggle("flip");
+      card1.parentElement.classList.toggle("flip");
+      fail(pickedCard, card1);
+      card1 = '';
+    },400);
     increaseMoves();
     return;
   }
@@ -83,6 +87,11 @@ function compareCards(pickedCard) {
   else {
     card1 = '';
   }
+}
+
+function fail(pickedCard, card1) {
+  pickedCard.classList.toggle("fail");
+  card1.classList.toggle("fail");
 }
 
 //Marks the cards are found so they are not clickable again and stay flipped, increases the found pairs count
@@ -136,10 +145,10 @@ function winner() {
 //Updates the rating according to certain moves, must change to parameters once difficulty is implemented
 function checkRating() {
   switch (moves) {
-    case 9:
+    case 11:
       starsSpan.innerText = "🌟🌟"
       break;
-    case 12:
+    case 16:
       starsSpan.innerText = "🌟"
       break;
     default:
