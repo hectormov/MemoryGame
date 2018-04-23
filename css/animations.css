@@ -1,0 +1,26 @@
+/* Modal Animations */
+@-webkit-keyframes slideIn {
+    from {bottom: -300px; opacity: 0}
+    to {bottom: 40%; opacity: 1}
+}
+
+@keyframes slideIn {
+    from {bottom: -300px; opacity: 0}
+    to {bottom: 40%; opacity: 1}
+}
+
+@-webkit-keyframes fadeIn {
+    from {opacity: 0}
+    to {opacity: 1}
+}
+
+@keyframes fadeIn {
+    from {opacity: 0}
+    to {opacity: 1}
+}
+
+/*Card Fail Animation*/
+/* @@keyframes shake  {
+  0% { transform: translate(1px, 1px) rotate(0deg);}
+  100% { transform: translate(-13px, -23px) rotate(-16deg);}
+} */
