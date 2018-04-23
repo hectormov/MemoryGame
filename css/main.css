@@ -169,13 +169,6 @@ border-radius: 20px;
   z-index: -10;
 }
 
-.css {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  z-index: -10;
-}
-
 /* Modal */
 /*  The background */
 #modal {
