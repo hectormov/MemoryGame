@@ -161,11 +161,18 @@ border-radius: 20px;
   font-size: 6vmin;
 }
 
-footer a {
+.img-license {
   font-size: 8px;
   position: fixed;
   bottom: 0;
   right: 0;
+  z-index: -10;
+}
+
+.css {
+  position: fixed;
+  bottom: 0;
+  left: 0;
   z-index: -10;
 }
 
@@ -188,7 +195,6 @@ footer a {
 
 .modal-content {
   position: fixed;
-  /* top: 40vw; */
   width: 100%;
   bottom: 40%;
 
@@ -243,7 +249,7 @@ footer a {
 .modal-body {
   padding: 2px 16px;
 }
- 
+
 .modal-footer {
     padding: 2px 16px;
     background-color:  rgba(92, 184, 92,0.75);;
