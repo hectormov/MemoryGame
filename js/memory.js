@@ -95,14 +95,21 @@ function compareCards(pickedCard) {
 function fail(pickedCard, card1) {
   pickedCard.classList.toggle("fail");
   card1.classList.toggle("fail");
-  // pickedCard.classList.parentElement.toggle("shake");
-  // card1.classList.parentElement.toggle("shake");
+  pickedCard.parentElement.parentElement.classList.toggle("shake");
+  pickedCard.firstElementChild.classList.toggle('shake');
+  card1.parentElement.parentElement.classList.toggle("shake");
+  card1.firstElementChild.classList.toggle('shake');
 }
 
 //Marks the cards are found so they are not clickable again and stay flipped, increases the found pairs count
 function matchFound(pickedCard) {
   card1.parentElement.classList.add("found");
   pickedCard.parentElement.classList.add("found");
+
+  pickedCard.parentElement.parentElement.classList.toggle("bounce");
+  pickedCard.firstElementChild.classList.toggle('bounce');
+  card1.parentElement.parentElement.classList.toggle("bounce");
+  card1.firstElementChild.classList.toggle('bounce');
   foundPairCount++;
 }
 
