@@ -1,16 +1,16 @@
 /* .card, */
-#gameBoard,
+.game-board,
 header {
   display: flex;
   flex-wrap: wrap;
 }
 
 @media screen and (max-width: 376px) {
-  #gameStatus,
-  .levelSelector,
-  #counter,
+  .game-status,
+  .level-selector,
+  .counter,
   button,
-  .starRating {
+  .star-rating {
     font-size: 14px;
   }
 }
@@ -22,14 +22,14 @@ header {
 }
 
 @media screen and (max-width: 668px) {
-  #logo {
+  .logo {
     width: 45px;
     height: 45px;
   }
   h1 {
     font-size: 25px;
   }
-  .cardContainer.easy {
+  .card-container.easy {
     min-height: 75px;
   }
   .icon {
@@ -41,15 +41,15 @@ header {
   h1 {
     font-size: 40px;
   }
-  #logo {
+  .logo {
     width: 85px;
     height: 65px;
   }
-  #gameStatus,
-  .levelSelector,
-  #counter,
+  .game-status,
+  .level-selector,
+  .counter,
   button,
-  .starRating {
+  .star-rating {
     font-size: 18px;
   }
   .modal-header{
@@ -76,9 +76,9 @@ header {
   .modal-header{
     font-size: 38px;
   }
-  #gameStatus,
-  #counter,
-  #starRating {
+  .game-status,
+  .counter,
+  .star-rating {
     font-size: 20px;
   }
   .modal-body {

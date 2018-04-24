@@ -2,7 +2,7 @@ html,
 body {
   font-family: 'Poppins', sans-serif;
   margin: 0;
-  background-image: url('../img/martian.svg');
+  background-image: url(../img/martian.svg);
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -15,7 +15,7 @@ header {
   margin-right: auto;
 }
 
-#logo {
+.logo {
   margin-top: 5px;
   margin-left: 3px;
   width: 55px;
@@ -31,13 +31,13 @@ h1 {
   color: rgb(230,230,230);
 }
 
-#gameStatus {
+.game-status {
   width: calc(33% - 3px);
   margin-left: 3px;
   color: rgb(230,230,230);
 }
 
-.levelSelector {
+.level-selector {
   width: calc(33%);
   text-align: center;
   margin-left: auto;
@@ -45,7 +45,7 @@ h1 {
   color: rgb(230,230,230);
 }
 
-#counter {
+.counter {
   width: calc(33% - 3px);
   margin-right: 3px;
   text-align: right;
@@ -58,13 +58,13 @@ button {
 
 }
 
-.starRating {
+.star-rating {
   width: 50%;
   text-align: right;
   color: rgb(230,230,230);
 }
 
-#gameBoard {
+.game-board {
   margin-top: 10px;
   justify-content: center;
   width: 100vw;
@@ -72,26 +72,25 @@ button {
   margin: auto;
 }
 
-.cardContainer.easy {
+.card-container.easy {
   width: calc(25% - 25px);
   height: calc(25vmin - 60px);
 }
 
-.cardContainer.hard {
+.card-container.hard {
   width: calc(17% - 15px);
   height: calc(17vmax - 60px);
   max-height: 90px;
   max-width: 125px;
 }
 
-.cardContainer {
+.card-container {
   align-items: center;
-  border: 1px solid black;
   min-width: 50px;
   min-height: 50px;
   margin: 3px;
   position: relative;
-border-radius: 20px;
+  border-radius: 20px;
   -webkit-perspective: 800px;
   -moz-perspective: 800px;
   -o-perspective: 800px;
@@ -102,7 +101,7 @@ border-radius: 20px;
   width: 100%;
   height: 100%;
   position: absolute;
-
+  border-radius: 20px;
   transform-style:preserve-3d;
   -webkit-transition: -webkit-transform 1s;
   -moz-transition: -moz-transform 1s;
@@ -129,10 +128,10 @@ border-radius: 20px;
 }
 
 .front {
-  -webkit-transform: rotateY( 180deg );
-  -moz-transform: rotateY( 180deg );
-  -o-transform: rotateY( 180deg );
-  transform: rotateY( 180deg );
+  -webkit-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
+  -o-transform: rotateY(180deg);
+  transform: rotateY(180deg);
   background: rgba(181,181,181,1);
   background: radial-gradient(circle, rgba(181,181,181,1) -5%, rgba(0,0,0,0.75) 80%);
 }
@@ -143,13 +142,13 @@ border-radius: 20px;
 }
 
 .card.flip {
-  -webkit-transform: rotateY( 180deg );
-  -moz-transform: rotateY( 180deg );
-  -o-transform: rotateY( 180deg );
-  transform: rotateY( 180deg );
+  -webkit-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
+  -o-transform: rotateY(180deg);
+  transform: rotateY(180deg);
 }
 
-.found {
+.no-click {
   pointer-events: none;
 }
 
@@ -171,7 +170,7 @@ border-radius: 20px;
 
 /* Modal */
 /*  The background */
-#modal {
+.modal {
   display: none;
   position: fixed;
   z-index: 1;
@@ -183,18 +182,17 @@ border-radius: 20px;
   -webkit-animation-name: fadeIn;
   -webkit-animation-duration: 0.4s;
   animation-name: fadeIn;
-  animation-duration: 0.4s
+  animation-duration: 0.4s;
 }
 
 .modal-content {
   position: fixed;
   width: 100%;
   bottom: 40%;
-
   -webkit-animation-name: slideIn;
   -webkit-animation-duration: 0.4s;
   animation-name: slideIn;
-  animation-duration: 0.4s
+  animation-duration: 0.4s;
 }
 
 .modal-header {
@@ -228,15 +226,15 @@ border-radius: 20px;
 .close:focus,
 .reset:hover,
 .reset:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .modal-header {
-    padding: 2px 16px;
-    background-color: rgba(92, 184, 92,0.75);
-    color: white;
+  padding: 2px 16px;
+  background-color: rgba(92, 184, 92,0.75);
+  color: white;
 }
 
 .modal-body {
@@ -244,9 +242,9 @@ border-radius: 20px;
 }
 
 .modal-footer {
-    padding: 2px 16px;
-    background-color:  rgba(92, 184, 92,0.75);;
-    color: white;
+  padding: 2px 16px;
+  background-color:  rgba(92, 184, 92,0.75);
+  color: white;
 }
 
 .fail {

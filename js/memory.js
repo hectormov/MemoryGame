@@ -1,15 +1,13 @@
-
-
-const board = document.querySelector('#gameBoard');
+const board = document.querySelector('.game-board');
 const headerTimer = document.querySelector('.time');
 const resetButton = document.querySelector('button');
 const moveCounter = document.querySelector('.moves');
-const starsSpan = document.querySelector('#stars');
-const modal = document.querySelector('#modal');
+const gameStars = document.querySelector('.game-stars');
+const modal = document.querySelector('.modal');
 const modalCloseX = document.querySelector('.close');
 const resetLink = document.querySelector('.reset');
-const easyLevel = document.querySelector('#easyLevel');
-const hardLevel = document.querySelector('#hardLevel');
+const easyLevel = document.querySelector('.easy-level');
+const hardLevel = document.querySelector('.hard-level');
 
 let level = 'easy';
 let card1 = '';
@@ -20,9 +18,7 @@ let count = 0;
 let deck = [''];
 
 /*
-Creates the board with a certain amount of cards (Default 4x4)
-TODO: I want to introduce different difficulty levels with more cards so I thought to create this dynamically
-and not set the deck to fixed.
+Creates the board with a certain amount of cards (Default 4x4) based on the difficulty selected
 */
 function buildBoard(level) {
   let size = level === 'easy' ? 16 : 36;
@@ -30,19 +26,21 @@ function buildBoard(level) {
   cardChooser();
   board.innerHTML = '';
   for (let i = 0; i < size; i++){
-    htmlTextToAdd += '<div class="cardContainer ' + level + '"><div class="card"><div class="front"><span class="icon">'+deck[i]+'</span></div><div class="back"></div></div></div>';
+    htmlTextToAdd += '<div class="card-container ' + level +
+    '"><div class="card"><div class="front"><span class="icon">' +
+    deck[i] + '</span></div><div class="back"></div></div></div>';
   }
   board.insertAdjacentHTML('afterbegin',htmlTextToAdd);
 }
 
 /*
-As long as only the front or back are clicked, flippes the card, additionally if the back is clicked
+As long as only the front or back are clicked, it flips the card, additionally if the back is clicked
 we call compareCards to check if the front matches
 */
 function flipCard(event) {
+  board.classList.toggle("no-click");
   let card = event.target;
-  if (card.id !== 'gameBoard' && !card.classList.contains("cardContainer")
-  && !card.classList.contains("card") && card1 !== card) {
+  if (card.classList.contains('front') || card.classList.contains('back')) {
     card.parentElement.classList.toggle("flip");
     if (card.classList.contains('back')) {
       let pickedCard = card.previousElementSibling;
@@ -51,6 +49,7 @@ function flipCard(event) {
       },500)
     }
   }
+  board.classList.toggle("no-click");
 }
 
 /*
@@ -70,6 +69,7 @@ function compareCards(pickedCard) {
     return;
   }
   else if (card1.innerText !== pickedCard.innerText) {
+    // board.classList.toggle("no-click");
     let flipLevel = level === 'easy' ? 800 : 400;
     fail(pickedCard, card1);
     setTimeout(function () {
@@ -79,8 +79,10 @@ function compareCards(pickedCard) {
       card1 = '';
     },flipLevel);
     increaseMoves();
+    // board.classList.toggle("no-click");
     return;
   }
+  // board.classList.toggle("no-click");
   matchFound(pickedCard);
   increaseMoves();
   let foundPairTarget = level === 'easy' ? 8 : 18;
@@ -90,6 +92,7 @@ function compareCards(pickedCard) {
   else {
     card1 = '';
   }
+  // board.classList.toggle("no-click");
 }
 
 function fail(pickedCard, card1) {
@@ -103,8 +106,8 @@ function fail(pickedCard, card1) {
 
 //Marks the cards are found so they are not clickable again and stay flipped, increases the found pairs count
 function matchFound(pickedCard) {
-  card1.parentElement.classList.add("found");
-  pickedCard.parentElement.classList.add("found");
+  card1.parentElement.classList.add("no-click");
+  pickedCard.parentElement.classList.add("no-click");
 
   pickedCard.parentElement.parentElement.classList.toggle("bounce");
   pickedCard.firstElementChild.classList.toggle('bounce');
@@ -146,7 +149,7 @@ function reset() {
   moveCounter.innerText = "0";
   foundPairCount = 0;
   buildBoard(level);
-  starsSpan.innerText = "🌟🌟🌟"
+  gameStars.innerText = "🌟🌟🌟"
 }
 
 function winner() {
@@ -159,10 +162,10 @@ function checkRating() {
   if (level === 'easy') {
     switch (moves) {
       case 11:
-        starsSpan.innerText = "🌟🌟"
+        gameStars.innerText = "🌟🌟"
         break;
       case 16:
-        starsSpan.innerText = "🌟"
+        gameStars.innerText = "🌟"
         break;
       default:
         break;
@@ -170,10 +173,10 @@ function checkRating() {
   } else {
     switch (moves) {
       case 22:
-        starsSpan.innerText = "🌟🌟"
+        gameStars.innerText = "🌟🌟"
         break;
       case 32:
-        starsSpan.innerText = "🌟"
+        gameStars.innerText = "🌟"
         break;
       default:
         break;
@@ -182,10 +185,10 @@ function checkRating() {
 }
 
 function showModal() {
-  let finalTime = document.querySelector('.finalTime');
-  let finalRating = document.querySelector('.modal-content .stars');
+  let finalTime = document.querySelector('.final-time');
+  let finalRating = document.querySelector('.modal-stars');
   finalTime.innerText = time;
-  finalRating.innerText = starsSpan.innerText;
+  finalRating.innerText = gameStars.innerText;
   modal.style.display = "block";
 }
 

@@ -10,38 +10,35 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
   </head>
   <body>
-  <!-- <section> -->
-    <div id="modal">
+    <div class="modal">
       <div class="modal-content">
         <div class ="modal-header">
           <span>We have a Winner!</span>
           <span class="close">&times;</span>
         </div>
         <div class ="modal-body">
-          <div class="winnerTime">You completed the game in <span class="finalTime"></span></div>
-          <div class="winnerRating">Rating: <span class="stars"></span></div>
+          <div>You completed the game in <span class="final-time"></span></div>
+          <div>Rating: <span class="modal-stars"></span></div>
         </div>
         <div class ="modal-footer">Play again? <span class="reset">GO!</span></div>
       </div>
     </div>
-  <!-- </section> -->
-
     <header>
-      <a href="http://hectormov.github.io/My-Portfolio"><img id="logo" src="img/logo3.svg" alt="H M Logo"></a>
+      <a href="http://hectormov.github.io/My-Portfolio"><img class="logo" src="img/logo3.svg" alt="H M Logo"></a>
       <h1>Memory Game</h1>
-      <div id="gameStatus">Moves: <span class="moves">0</span></div>
-      <div class="levelSelector">
+      <div class="game-status">Moves: <span class="moves">0</span></div>
+      <div class="level-selector">
         <form>
-          <input type="radio" name="levelSelector" id="easyLevel" checked="checked">Easy
-          <input type="radio" name="levelSelector" id="hardLevel">Hard
+          <input type="radio" name="level-selector" class="easy-level" checked="checked"><label>Easy</label>
+          <input type="radio" name="level-selector" class="hard-level"><label>Hard</label>
         </form>
       </div>
-      <div id="counter">Time: <span class="time">00:00:00</span></div>
+      <div class="counter">Time: <span class="time">00:00:00</span></div>
       <button type="button">Restart</button>
-      <div class="starRating">Rating: <span id="stars">🌟🌟🌟</span></div>
+      <div class="star-rating">Rating: <span id="game-stars">🌟🌟🌟</span></div>
     </header>
     <main>
-      <div id="gameBoard"></div>
+      <div class="game-board"></div>
     </main>
     <script src="js/memory.js"></script>
     <footer>
