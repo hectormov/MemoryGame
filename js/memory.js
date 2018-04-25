@@ -38,18 +38,30 @@ As long as only the front or back are clicked, it flips the card, additionally i
 we call compareCards to check if the front matches
 */
 function flipCard(event) {
-  board.classList.toggle("no-click");
+  toggleClicking(board);
   let card = event.target;
   if (card.classList.contains('front') || card.classList.contains('back')) {
     card.parentElement.classList.toggle("flip");
     if (card.classList.contains('back')) {
       let pickedCard = card.previousElementSibling;
-      setTimeout(function (){
+      setTimeout(function () {
         compareCards(pickedCard);
-      },500)
+      },300);
     }
   }
-  board.classList.toggle("no-click");
+  let flipLevel = level === 'easy' ? 300 : 200;
+  setTimeout(function () {
+    toggleClicking(board);
+  }, flipLevel);
+}
+
+/*
+This function is used to disable clicking on the gameboard while the animations are executing
+This prevents an edge case when clicking very fast on the cards then more than 2 cards
+may flip at the same time not comparing the right ones.
+*/
+function toggleClicking(element) {
+  element.classList.toggle("no-click");
 }
 
 /*
@@ -69,8 +81,7 @@ function compareCards(pickedCard) {
     return;
   }
   else if (card1.innerText !== pickedCard.innerText) {
-    // board.classList.toggle("no-click");
-    let flipLevel = level === 'easy' ? 800 : 400;
+    let flipLevel = level === 'easy' ? 400 : 200;
     fail(pickedCard, card1);
     setTimeout(function () {
       pickedCard.parentElement.classList.toggle("flip");
@@ -79,10 +90,8 @@ function compareCards(pickedCard) {
       card1 = '';
     },flipLevel);
     increaseMoves();
-    // board.classList.toggle("no-click");
     return;
   }
-  // board.classList.toggle("no-click");
   matchFound(pickedCard);
   increaseMoves();
   let foundPairTarget = level === 'easy' ? 8 : 18;
@@ -92,9 +101,12 @@ function compareCards(pickedCard) {
   else {
     card1 = '';
   }
-  // board.classList.toggle("no-click");
 }
 
+/*
+Adds the classes for animations when the selected pair do not match
+Fail adds color, shake animates the image, and it is applied to both the card and the icon
+*/
 function fail(pickedCard, card1) {
   pickedCard.classList.toggle("fail");
   card1.classList.toggle("fail");
@@ -108,11 +120,12 @@ function fail(pickedCard, card1) {
 function matchFound(pickedCard) {
   card1.parentElement.classList.add("no-click");
   pickedCard.parentElement.classList.add("no-click");
-
   pickedCard.parentElement.parentElement.classList.toggle("bounce");
   pickedCard.firstElementChild.classList.toggle('bounce');
   card1.parentElement.parentElement.classList.toggle("bounce");
   card1.firstElementChild.classList.toggle('bounce');
+  card1.classList.toggle('found-pair');
+  pickedCard.classList.toggle('found-pair');
   foundPairCount++;
 }
 
@@ -157,7 +170,7 @@ function winner() {
   showModal();
 }
 
-//Updates the rating according to certain moves, must change to parameters once difficulty is implemented
+//Updates the rating according to certain moves and the difficulty selected
 function checkRating() {
   if (level === 'easy') {
     switch (moves) {
@@ -184,6 +197,7 @@ function checkRating() {
   }
 }
 
+/* Updates data of the modal with final results and then it brings it up */
 function showModal() {
   let finalTime = document.querySelector('.final-time');
   let finalRating = document.querySelector('.modal-stars');
@@ -197,7 +211,7 @@ function hideModal() {
 }
 
 /* Fisher-Yates shuffle algorithm
-   Basically grabs the array, generates a random number based on the number of indexes left,
+   Grabs the array, generates a random number based on the number of indexes left,
    and switches those numbers
 */
 function shuffle(array) {
@@ -232,9 +246,6 @@ function cardChooser() {
   deck = symbols;
 }
 
-buildBoard(level);
-
-// Events
 board.addEventListener('click',flipCard);
 resetButton.addEventListener('click',reset);
 resetLink.addEventListener('click',reset);
@@ -248,3 +259,5 @@ hardLevel.addEventListener('click', function() {
   level = 'hard';
   reset();
 });
+
+buildBoard(level);

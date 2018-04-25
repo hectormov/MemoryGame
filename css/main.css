@@ -73,7 +73,7 @@ button {
 }
 
 .card-container.easy {
-  width: calc(25% - 25px);
+  width: calc(25% - 20px);
   height: calc(25vmin - 60px);
 }
 
@@ -81,7 +81,7 @@ button {
   width: calc(17% - 15px);
   height: calc(17vmax - 60px);
   max-height: 90px;
-  max-width: 125px;
+  max-width: 140px;
 }
 
 .card-container {
@@ -91,10 +91,6 @@ button {
   margin: 3px;
   position: relative;
   border-radius: 20px;
-  -webkit-perspective: 800px;
-  -moz-perspective: 800px;
-  -o-perspective: 800px;
-  perspective: 800px;
 }
 
 .card {
@@ -103,10 +99,10 @@ button {
   position: absolute;
   border-radius: 20px;
   transform-style:preserve-3d;
-  -webkit-transition: -webkit-transform 1s;
-  -moz-transition: -moz-transform 1s;
-  -o-transition: -o-transform 1s;
-  transition: transform 1s;
+  -webkit-transition: -webkit-transform 0.5s;
+  -moz-transition: -moz-transform 0.5s;
+  -o-transition: -o-transform 0.5s;
+  transition: transform 0.5s;
   -webkit-transform-style: preserve-3d;
   -moz-transform-style: preserve-3d;
   -o-transform-style: preserve-3d;
@@ -178,7 +174,6 @@ button {
   height: 100%;
   background-color: rgb(0,0,0);
   background-color: rgba(0,0,0,0.4);
-/* Fade in the background */
   -webkit-animation-name: fadeIn;
   -webkit-animation-duration: 0.4s;
   animation-name: fadeIn;
@@ -252,11 +247,16 @@ button {
 }
 
 .shake {
-  animation: shake 1s;
-  animation-iteration-count: infinite;
+  animation: shake 0.5s;
+  animation-iteration-count: 1;
 }
 
 .bounce {
-  animation: bounce 1s;
+  animation: bounce 0.6s;
   animation-iteration-count: 1;
+}
+
+.found-pair {
+  background: rgba(181,181,181,1);
+  background: radial-gradient(circle, rgba(92, 184, 92,1) 5%, rgba(0,0,0,0.5) 100%);
 }
