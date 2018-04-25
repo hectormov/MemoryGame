@@ -8,8 +8,9 @@ _**Moves**_ display the amount of tries you have done during the current gamepla
 
 _**Rating**_ - The stars will decrease after certain amount of moves depending on the level you have selected.
 
-##Technical
-Everything was done using vanilla JS, HTML and CSS only, no additional libraries were required
+##Technical:
+
+Everything was done using _**vanilla JS, HTML and CSS only**_, no additional libraries were required
 
 ##From the project Overview page of the FEND from Udacity:
 
