@@ -16,6 +16,7 @@ let foundPairCount = 0;
 let timer = null;
 let count = 0;
 let deck = [''];
+let time = null;
 
 /*
 Creates the board with a certain amount of cards (Default 4x4) based on the difficulty selected
@@ -162,7 +163,7 @@ function reset() {
   moveCounter.innerText = "0";
   foundPairCount = 0;
   buildBoard(level);
-  gameStars.innerText = "🌟🌟🌟"
+  gameStars.innerText = "🌟🌟🌟";
 }
 
 function winner() {
@@ -175,10 +176,10 @@ function checkRating() {
   if (level === 'easy') {
     switch (moves) {
       case 11:
-        gameStars.innerText = "🌟🌟"
+        gameStars.innerText = "🌟🌟";
         break;
       case 16:
-        gameStars.innerText = "🌟"
+        gameStars.innerText = "🌟";
         break;
       default:
         break;
@@ -186,10 +187,10 @@ function checkRating() {
   } else {
     switch (moves) {
       case 22:
-        gameStars.innerText = "🌟🌟"
+        gameStars.innerText = "🌟🌟";
         break;
       case 32:
-        gameStars.innerText = "🌟"
+        gameStars.innerText = "🌟";
         break;
       default:
         break;
@@ -207,7 +208,7 @@ function showModal() {
 }
 
 function hideModal() {
-  modal.style.display = "none"
+  modal.style.display = "none";
 }
 
 /* Fisher-Yates shuffle algorithm
